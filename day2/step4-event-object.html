@@ -38,13 +38,18 @@
 
             document.querySelectorAll("button")[2]
             .addEventListener("click", removeLastBoxHandler);
+
+            container.addEventListener("click", deleteBoxFun );
         }
         function addBoxHandler(){
-            var box = document.createElement("div");
+          /*   var box = document.createElement("div");
                 box.innerText = "Box"+count;
                 box.setAttribute("class", "box");
-                box.setAttribute("onclick", "deleteFun(this)");
+                box.setAttribute("onclick", "deleteFun(this)"); 
             container.appendChild(box);
+          */
+        // container.innerHTML += "<div onclick='deleteFun(this)' class='box'>Box"+count+"</div>";
+            container.innerHTML += "<div class='box'>Box"+count+"</div>";
             count++;
         }
         function removeBoxHandler(){
@@ -61,10 +66,20 @@
             count--;
             }
         }
-        function deleteFun(elm){
-            if(elm){
-            container.removeChild(elm);
-            count--;
+        // function deleteFun(elm){
+        //     if(elm){
+        //     container.removeChild(elm);
+        //     count--;
+        //     }
+        // }
+
+        function deleteBoxFun(evt){
+            // alert(evt.target.getAttribute("class"));
+            if(evt.target.getAttribute("class") === 'box'){
+                container.removeChild(evt.target);
+                count--;
+            }else{
+                alert("do click on the box element")
             }
         }
     </script>
